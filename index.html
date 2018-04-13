@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" />
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <!-- <link href="./static/css/style.css" type="text/css" rel="stylesheet"> -->
+  <!-- <link href="./static/css/index.css" type="text/css" rel="stylesheet"> -->
+  <!-- <link href="./static/css/common.css" type="text/css" rel="stylesheet"> -->
+  <link href="./static/css/swiper.min.css" type="text/css" rel="stylesheet">
+  <title>艺考</title>
+  <script type="text/javascript">
+    // var config = {$config};
+    // var DEFAULT_DATA = {$indexData};
+    const DEFAULT_DATA = {
+      "userinfo": {
+        "type": 2,
+        "name": "\u592a",
+        "avatar": "https:\/\/yikao.baolanbb.com\/attachment\/mavatar_thumb\/20180403170808yhMmuEdW.jpg",
+        "id": "164",
+        "uid": 198,
+        "s_province": 3,
+        "s_city": 76,
+        "s_county": 1173,
+        "address": "\u4f60\u597d",
+        "charge": null,
+        "curriculum": [3],
+        "propaganda": null,
+        "introduce": "\u94fe\u63a5",
+        "cover": "https:\/\/yikao.baolanbb.com\/attachment\/mposter_thumb\/20180403170802ZQLUvCgM.jpg",
+        "qualifications": [],
+        "sex": 1,
+        "age": "0",
+        "school": "",
+        "m_school": "0",
+        "c_points": 0,
+        "integral": 6,
+        "tel": "464646",
+        "tco": "1",
+        "slide": ["https:\/\/yikao.baolanbb.com\/attachment\/slide_thumb\/20180403170832VLsJMhys.jpg"]
+      },
+      "bannerlist": [{
+        "id": "14",
+        "pic": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/04\/bbzKmE4b3BRSc1M0ItmJkz1xLxTk3q.png",
+        "link": "https:\/\/www.baidu.com"
+      }, {
+        "id": "15",
+        "pic": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/04\/SKCJG4gFlCzPqwwFfGk9jgKZfP4JZ2.png",
+        "link": ""
+      }, {
+        "id": "16",
+        "pic": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/04\/PZADddh5RDPC8ga2FglaPlFAzArnow.png",
+        "link": "http:\/\/www.jianshu.com"
+      }],
+      "topDatalist": [{
+        "id": "27",
+        "title": "\u6444\u5f71\u827a\u8003\u57f9\u8bad\u5b66\u6821\uff0c\u8bf8\u591a\u5c71\u4e1c\u827a\u8003\u751f\u7684\u81f3\u4f73\u9009\u62e9",
+        "author": "\u827a\u8003\u5c0f\u751f",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/g3nR7BZU3114XAkNu9rCTraCkN41BZ.jpg",
+        "time": "01-04",
+        "collect": false
+      }, {
+        "id": "26",
+        "title": "2018\u5e74\u6e56\u5357\u827a\u8003\u62db\u751f\u5f55\u53d6\u6709\u5f88\u5927\u8c03\u6574 \u7b2c\u4e00\u5fd7\u613f\u53ef\u586b10\u4e2a\u5b66\u6821",
+        "author": "\u827a\u8003\u5c0f\u751f",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/GbJ9b1HZMAtQIg4b6bG8Z8TBGa844B.jpg",
+        "time": "01-04",
+        "collect": false
+      }, {
+        "id": "25",
+        "title": "\u6c5f\u82cf\u827a\u8003\u821e\u8e48\u4e00\u5bf9\u4e00\u54ea\u91cc\u6709\u57f9\u8bad\u7ecf\u9a8c\u4e30\u5bcc",
+        "author": "\u827a\u8003\u5c0f\u751f",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/Tcwi9112VGgM2c92vwChwGWUcmIFu1.jpg",
+        "time": "01-04",
+        "collect": false
+      }],
+      "schoolMenu": {
+        "left": ["8\u5927\u4f20\u5a92", "9\u5927\u7f8e\u9662", "11\u5927\u97f3\u4e50", "30\u6240\u72ec\u7acb", "15\u6240\u53c2\u7167", "2018\u7b80\u7ae0", "\u5df2\u51fa\u6210\u7ee9"],
+        "fraction": {
+          "300\u4ee5\u4e0b": [0, 299],
+          "300-400\u5206": [300, 399],
+          "400-500\u5206": [400, 499],
+          "500\u4ee5\u4e0a": [500, 999]
+        }
+      },
+      "classDatalist": [{
+        "id": "12",
+        "title": "\u64ad\u97f3\u4e3b\u6301\u9ad8\u5206\u653b\u7565",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/02\/I6bJZMkrw3MEKu6CA2ayXv6Bem9Edk.jpg",
+        "watchnum": "222",
+        "collect": false,
+        "integral": 200
+      }, {
+        "id": "13",
+        "title": "\u7f16\u5bfc\u5bfc\u5b66\u516c\u5f00\u8bfe\u6559\u5b66...",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/02\/I6bJZMkrw3MEKu6CA2ayXv6Bem9Edk.jpg",
+        "watchnum": "200",
+        "collect": false,
+        "integral": 0
+      }, {
+        "id": "14",
+        "title": "\u7f16\u5bfc\u6559\u5b66\u6a21\u5f0f\u9ad8\u5206\u6280...",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/W0sVsbTBpLByybWrjlkPAPK09LiAKV.jpg",
+        "watchnum": "1000",
+        "collect": false,
+        "integral": 0
+      }, {
+        "id": "26",
+        "title": "\u6d4b\u8bd5\u6570\u91cf\u7684\u516c\u5f00\u8bfe",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/W2PcxpePUHmA6gE0WVv0eEcvKgWMec.jpg",
+        "watchnum": "11",
+        "collect": false,
+        "integral": 0
+      }],
+      "classroom_swiper": [{
+        "id": "28",
+        "cover": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/04\/rG3M9S1x3zvyvhAshXHnevGhhh3tX9.png",
+        "link": "http:\/\/www.56.com\/u75\/v_NDk3MTQyMDc.html"
+      }, {
+        "id": "29",
+        "cover": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/04\/AAxf1AH9X9V5UGL76jd2zuD7zH9aCG.png",
+        "link": "http:\/\/www.iqiyi.com\/v_19rrb8ojac.html?src=frbdaldjunest&vfm=bdvtx&frp=v.baidu.com%2Fv&kwid=19110"
+      }, {
+        "id": "30",
+        "cover": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/04\/wymrIpbnR2cNZ4wP2mQucv26c2iPo4.png",
+        "link": "http:\/\/v.youku.com\/v_show\/id_XMzE1NTk5NzE0MA==.html"
+      }],
+      "know_banner": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category\/banner.png",
+      "know_category": [{
+        "id": 1,
+        "name": "\u827a\u8003\u5e38\u8bc6",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/1.png"
+      }, {
+        "id": 2,
+        "name": "\u62db\u751f\u9662\u6821",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/2.png"
+      }, {
+        "id": 3,
+        "name": "\u64ad\u97f3\u4e3b\u6301\u8d44\u6599\u5e93",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/3.png"
+      }, {
+        "id": 4,
+        "name": "\u5f71\u89c6\u8868\u6f14\u8d44\u6599\u5e93",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/4.png"
+      }, {
+        "id": 5,
+        "name": "\u7f8e\u672f\u827a\u8003\u8d44\u6599\u5e93",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/5.png"
+      }, {
+        "id": 6,
+        "name": "\u97f3\u4e50\u827a\u8003\u8d44\u6599\u5e93",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/6.png"
+      }, {
+        "id": 7,
+        "name": "\u7f16\u5bfc\u7c7b\u827a\u8003\u8d44\u6599\u5e93",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/7.png"
+      }, {
+        "id": 8,
+        "name": "\u5176\u4ed6\u8d44\u6599",
+        "img": "https:\/\/yikao.baolanbb.com\/attachment\/knowledge_category_wechat\/8.png"
+      }],
+      "institutionDatalist": [{
+        "id": "49",
+        "title": "\u5929\u7c41\u827a\u672f\u5b66\u6821",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/S0aaofm8nfNBAnjO525oamfVnL2FLJ.jpg",
+        "city": "\u5929\u6d25",
+        "curriculum": "\u64ad\u97f3\u3001\u670d\u8868\u3001\u4e66\u6cd5",
+        "introduce": "\u5929\u7c41\u827a\u672f\u5b66\u6821\u662f\u7ecf\u6559\u80b2\u4e3b\u7ba1..."
+      }, {
+        "id": "50",
+        "title": "\u5353\u5de7\u827a\u8003\u753b\u5ba4",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/uaWAmA8s92wT44mbmHzw499tjIGLaL.jpeg",
+        "city": "\u5317\u4eac",
+        "curriculum": "\u7f8e\u672f\u3001\u670d\u8868\u3001\u4e66\u6cd5",
+        "introduce": "\u5353\u5de7\u827a\u8003\u753b\u5ba4\u5168\u65b0\u5347\u7ea7\uff0c\u4ece..."
+      }, {
+        "id": "52",
+        "title": "\u5b9d\u5178\u827a\u8003",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/H69Za7Z76VeIeqD6C3e3116911a3Vc.jpeg",
+        "city": "\u5317\u4eac",
+        "curriculum": "\u821e\u8e48\u3001\u670d\u8868\u3001\u4e66\u6cd5",
+        "introduce": "&quot;\u5b9d\u5178\u827a\u8003\u662f\u4e00..."
+      }, {
+        "id": "53",
+        "title": "\u6b66\u6c49\u591a\u82ac\u827a\u672f\u5b66\u6821",
+        "poster": "https:\/\/yikao.baolanbb.com\/attachment\/images\/6\/2018\/01\/UbWLXuB0utZnmO9c0tBznmtB9ddtBT.jpeg",
+        "city": "\u5317\u4eac",
+        "curriculum": "\u6444\u5f71\u3001\u4e66\u6cd5\u3001\u7a7a\u4e58",
+        "introduce": "\u591a\u82ac\u827a\u672f\u5b66\u6821\u5728\u521b\u4e1a9\u5e74\u6765..."
+      }],
+      "search_keywords": {
+        "top": {
+          "history": null,
+          "hot": ["\u6821\u8003", "2018", "\u5317\u5f71", "\u6821", "\u4f60", "201"]
+        },
+        "circle": {
+          "history": null,
+          "hot": ["\u6d4b\u8bd5", "\u6d4b", "\u4e8c", "12", "1", "123"]
+        },
+        "lesson": {
+          "history": null,
+          "hot": ["\u6d4b\u8bd5", "\u64ad\u97f3", "\u5e7f\u64ad", "\u7f16\u5bfc", "\u6d4b\u8bd53", "\u6d4b\u8bd54"]
+        },
+        "mechanism": {
+          "history": null,
+          "hot": ["\u5218\u5e05", "\u827a\u8003", "\u6b66\u6c49", "\u5353\u5de7", "\u4e8c", "\u4e8c\u54c8"]
+        },
+        "school_search": {
+          "history": null,
+          "hot": ["\u676d\u5dde", "\u91cd\u5e86", "\u56db\u5ddd", "\u6d59\u6c5f", "\u6c88\u9633"]
+        }
+      },
+      "notifyNum": false
+    }
+
+    var rem, doc = document,
+      elm = doc.documentElement;
+    rem = 20 / 750 * elm.clientWidth;
+    elm.style.fontSize = rem + 'px';
+    window.addEventListener('resize', function() {
+      rem = 20 / 750 * elm.clientWidth;
+      elm.style.fontSize = rem + 'px';
+    });
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>
