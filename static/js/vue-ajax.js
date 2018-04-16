@@ -10,7 +10,7 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(response => {
-  return response
+  return response.data
 }, error => {
   return Promise.resolve(error.response)
 })
