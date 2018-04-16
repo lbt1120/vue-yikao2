@@ -1,40 +1,40 @@
 <template>
-  <div class="list-box">
-    <ul v-if="showMany=='all'">
-      <li class="b-cutline" v-for="(item,index) in datalist" :data-id="item.id">
-        <div class="f-left dataimg">
-          <img :src="item.cover" alt="">
-        </div>
-        <div class="f-left topinfo">
-          <div class="list-title font32" @click="routeTo(item)">{{item.title}}</div>
-          <div class="list-intro font28">
-            <span class="f-left author">{{item.author}}</span>
-            <span class="f-left">{{item.time}}</span>
-            <div class="f-right collectbtn" @click="collect(item.id,2)" :class="item.collect==true?'icon-collect':'icon-uncollect'">
-              <span>收藏</span>
-            </div>
+<div class="list-box">
+  <ul v-if="showMany=='all'">
+    <li class="b-cutline" v-for="(item,index) in datalist" :data-id="item.id">
+      <div class="f-left dataimg">
+        <img :src="item.cover" alt="">
+      </div>
+      <div class="f-left topinfo">
+        <div class="list-title font32" @click="routeTo(item)">{{item.title}}</div>
+        <div class="list-intro font28">
+          <span class="f-left author">{{item.author}}</span>
+          <span class="f-left">{{item.time}}</span>
+          <div class="f-right collectbtn" @click="collect(item.id,2)" :class="item.collect==true?'icon-collect':'icon-uncollect'">
+            <span>收藏</span>
           </div>
         </div>
-      </li>
-    </ul>
-    <ul v-else>
-      <li class="b-cutline" v-for="(item,index) in datalist" v-if="index<showMany" :data-id="item.id">
-        <div class="f-left dataimg">
-          <img :src="item.poster" alt="">
-        </div>
-        <div class="f-left topinfo">
-          <div class="list-title font32" @click="routeTo(item)">{{item.title}}</div>
-          <div class="list-intro font28">
-            <span class="f-left author">{{item.author}}</span>
-            <span class="f-left addtime">{{item.time}}</span>
-            <div class="f-right  collectbtn" :class="item.collect==true?'icon-collect':'icon-uncollect'" @click="collect(item.id,2)">
-              <span>收藏</span>
-            </div>
+      </div>
+    </li>
+  </ul>
+  <ul v-else>
+    <li class="b-cutline" v-for="(item,index) in datalist" v-if="index<showMany" :data-id="item.id">
+      <div class="f-left dataimg">
+        <img :src="item.poster" alt="">
+      </div>
+      <div class="f-left topinfo">
+        <div class="list-title font32" @click="routeTo(item)">{{item.title}}</div>
+        <div class="list-intro font28">
+          <span class="f-left author">{{item.author}}</span>
+          <span class="f-left addtime">{{item.time}}</span>
+          <div class="f-right  collectbtn" :class="item.collect==true?'icon-collect':'icon-uncollect'" @click="collect(item.id,2)">
+            <span>收藏</span>
           </div>
         </div>
-      </li>
-    </ul>
-  </div>
+      </div>
+    </li>
+  </ul>
+</div>
 </template>
 <script>
 export default {
@@ -49,7 +49,12 @@ export default {
     routeTo: function(item) {
       let docid = item.id
       let title = item.title
-      this.$router.push({ name: 'contentrichtext', params: { docid}})
+      this.$router.push({
+        name: 'contentrichtext',
+        params: {
+          docid
+        }
+      })
     },
     show: function() {
       if (this.showmany != undefined) {
@@ -59,7 +64,10 @@ export default {
     collect: async function(aid, type) {
       let verify = this.verify.isLogin();
       if (verify) {
-        let params = { aid, type };
+        let params = {
+          aid,
+          type
+        };
         let dataArr = this.datalist
         const res = await _api.collect(params);
         for (var i = 0; i < dataArr.length; i++) {
@@ -72,7 +80,9 @@ export default {
           }
         }
       } else {
-        this.$router.push({ name: 'login' })
+        this.$router.push({
+          name: 'login'
+        })
       }
 
     },
@@ -81,11 +91,17 @@ export default {
     this.show();
   }
 }
-
 </script>
-<style scoped>
+<style scoped lang="less">
 .author {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
+.list-box {
+    .dataimg {
+        width: 26%;
+        height: 7rem;
+        margin-right: 1.2rem;
+    }
+}
 </style>
