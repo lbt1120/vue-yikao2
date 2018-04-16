@@ -1,34 +1,33 @@
 <template>
 <div class="wapper homewapper">
   <section class="banner">
+    <v-swiper :datalist="bannerlist"></v-swiper>
   </section>
   <section class="databox white_bg user" :class="userLogin==false?'unLogin':'isLogin'">
-    <div class="datatag">
-      <div class="title-box" v-if="userLogin==false">
-        <div class="user-headimg" @click="routeTo(0)"></div>
-        <div class="title-text font32">
-          <div>未登录</div>
-          <div>点击头像登陆</div>
-        </div>
-        <div class="title-more font28">
-          <div class="tag-arrow f-left"></div>
-        </div>
+    <div class="title-box" v-if="userLogin==false">
+      <div class="user-headimg" @click="routeTo(0)"></div>
+      <div class="title-text font32">
+        <div>未登录</div>
+        <div>点击头像登陆</div>
       </div>
-      <div class="title-box" @click="routeTo(6)" v-else>
-        <div class="user-headimg">
-          <img :src="user.avatar" alt="">
-        </div>
-        <div class="title-text font32">
-          <div>{{user.name}}</div>
-        </div>
-        <div class="title-more font28">
-          <div class="tag-arrow f-left"></div>
-        </div>
+      <div class="title-more font28">
+        <div class="tag-arrow f-left"></div>
+      </div>
+    </div>
+    <div class="title-box" @click="routeTo(6)" v-else>
+      <div class="user-headimg">
+        <img :src="user.avatar" alt="">
+      </div>
+      <div class="title-text font32">
+        <div>{{user.name}}</div>
+      </div>
+      <div class="title-more font28">
+        <div class="tag-arrow f-left"></div>
       </div>
     </div>
   </section>
   <section v-for="(item,index) in tagdata" class="databox white_bg" :class="item.datatable?'':'entrance'">
-    <div class="datatag" v-if='item.datatable'>
+    <div v-if='item.datatable'>
       <div class="title-box">
         <div class="index_titleTag"></div>
         <div class="title-text font32">{{item.title}}</div>
@@ -37,18 +36,47 @@
           <div class="tag-arrow f-left"></div>
         </div>
       </div>
-      <v-datalist :datalist="topDatalist" :showmany="showmany" v-if="item.datatablename=='topDatalist'"></v-datalist>
-      <!-- <v-datatable :dataType="'video'" :videodata="classDatalist" v-if="item.dataType=='video'"></v-datatable> -->
-      <!-- <v-datatable :dataType="'text'" :textdata="institutionDatalist" v-if="item.dataType=='text'"></v-datatable> -->
+      <v-datalist :datalist="topDatalist" :showmany="showmany" v-if="item.datatable=='list'"></v-datalist>
+      <div class="table-box" v-if="item.datatable=='table'">
+        <ul>
+          <!-- 视频循环这个LI -->
+          <li class="f-left" v-if="item.dataType=='video'" v-for="(classData,index) in classDatalist" @click="routerTo(item.id)">
+            <div class="f-left dataimg">
+              <img :src="classData.poster" alt="">
+              <div class="integral" v-if="classData.integral==0">免费</div>
+              <div class="integral" v-else>{{classData.integral}} 积分</div>
+            </div>
+            <div class="f-left detailsbox">
+              <div class="table-title font32 text-overflow row2">{{classData.title}}</div>
+            </div>
+          </li>
+          <!-- 机构循环这个LI -->
+          <li class="f-left" v-if="item.dataType=='text'" v-for="(ins,index) in institutionDatalist" @click="routerTo(item.id)">
+            <div class="f-left dataimg">
+              <img :src="ins.poster" alt="">
+            </div>
+            <div class="f-left detailsbox">
+              <div class="table-title font32">
+                <p class="text-overflow row1">{{ins.title}}</p>
+              </div>
+              <div class="table-tag font28">
+                <div class="table-city f-left">{{ins.city}}</div>
+              </div>
+              <div class="table-explain text-overflow row1 font24">
+                <p class="text-overflow row1">{{ins.introduce}}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <img :src="know_banner" alt="" v-else  @click="routeTo(item.num)">
+    <img :src="know_banner" alt="" v-if="item.template==false" @click="routeTo(item.num)">
   </section>
 </div>
 </template>
 <script>
-// import swiper from '../swiper/Swiper-home'
 import datalist from '@/components/ModuleDataView/Module-DataList'
-// import datatable from '../moduleList/Data-table'
+import swiper from '@/components/ModuleSwiper/Swiper-home'
 export default {
   name: 'HomeIndex',
   data() {
@@ -56,8 +84,9 @@ export default {
       tagdata: [{
           title: "艺考头条",
           num: 1,
-          template: true,
-          datatable: true,
+          template: true, //是否需要模板
+          datatable: 'list', //模板类型（list-列表  table-表格）
+          dataType: 'list', //数据类型
           datatablename: 'topDatalist'
         },
         {
@@ -71,7 +100,7 @@ export default {
           num: 2,
           template: true,
           dataType: 'video',
-          datatable: true,
+          datatable: 'table',
           datatablename: 'classDatalist'
         },
         {
@@ -79,7 +108,7 @@ export default {
           num: 3,
           template: true,
           dataType: 'text',
-          datatable: true,
+          datatable: 'table',
           datatablename: 'institutionDatalist',
         }
       ],
@@ -89,7 +118,7 @@ export default {
       institutionDatalist: "",
       showmany: 3,
       userLogin: false,
-      know_banner:'https://yikao.baolanbb.com/attachment/knowledge_category/banner.png',
+      know_banner: 'https://yikao.baolanbb.com/attachment/knowledge_category/banner.png',
       user: {
         name: '',
         avatar: ''
@@ -97,12 +126,12 @@ export default {
     }
   },
   components: {
-    // "v-swiper": swiper,
+    "v-swiper": swiper,
     "v-datalist": datalist,
-    // "v-datatable": datatable,
   },
   methods: {
     routeTo(type) {
+      console.log(type)
       var data = null,
         pathname = 'home_index';
       pathname = this.apiArr(type).pathname;
@@ -182,7 +211,7 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
 .homewapper {
     padding-bottom: 5rem;
     .user {
@@ -227,11 +256,45 @@ export default {
         margin-top: 0.3rem;
     }
     .entrance {
-        padding:0;
+        padding: 0;
         img {
             width: 100%;
             height: 12rem;
         }
+    }
+}
+.table-box {
+    ul li {
+        width: 48%;
+        margin-bottom: 1rem;
+        &:nth-child(even) {
+            margin-left: 1rem;
+        }
+    }
+    .dataimg {
+        position: relative;
+        height: 10.75rem;
+    }
+    .integral {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: #fff;
+        background-color: #3c99f7;
+        padding: 0.25rem 1rem;
+        font-size: 1rem;
+        border-top-left-radius: 0.6rem;
+    }
+    .detailsbox {
+        width: 100%;
+        margin: 0.8rem 0;
+    }
+    .table-tag {
+        margin: 0.6rem 0 1rem;
+        overflow: hidden;
+    }
+    .table-explain {
+        color: #999999;
     }
 }
 </style>
