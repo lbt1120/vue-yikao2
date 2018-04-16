@@ -1,6 +1,5 @@
-/*-----变量集中营-------*/
 @basecolor: #3c99f7;
-/*-----变量集中营-------*/
+
 .home {
   background: url("../image/icon/white-home.png") no-repeat;
   background-size: 100%;
@@ -71,4 +70,47 @@
 
 .active .navtitle {
   color: @basecolor;
+}
+/*数据样式-列表*/
+.list-box ul,
+.list-box ul li,
+.table-box ul,
+.table-box ul li {
+  overflow: hidden;
+}
+
+.list-box ul li {
+  padding: 0.85rem 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.list-box .dataimg {
+  width: 26%;
+  height: 7rem;
+  margin-right: 1.2rem;
+}
+
+.list-intro,
+.list-title {
+  padding: 0;
+  margin-bottom: 1rem;
+  line-height: 1.8rem;
+}
+
+.list-intro {
+  color: #999999;
+}
+
+.homewapper .topinfo,
+.morewapper .topinfo,
+.usercollectwapper .topinfo {
+  width: 68%;
+}
+
+.list-intro {
+  overflow: hidden;
+  line-height: 2.1rem;
 }
