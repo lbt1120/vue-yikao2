@@ -1,5 +1,15 @@
 <template>
 <div class="body" id="homewarpper">
+  <mt-search cancel-text="取消" placeholder="搜索" v-if='search'>
+  </mt-search>
+  <div class="classifynavbox white_bg b-cutline" v-if='classifyshow'>
+    <scroll class="wrapper " :scrollX="scrollX" :pulldown="pulldown" :scrollXWidth="scrollXWidth" :click="true">
+      <div v-for="(item,index) in classify" class="font32 item-nav" ref="itemnav" :class="{active:thisclassify==item.value}" @click="classifyid(item)">
+        <a href="javascript:;">{{item.value}}</a>
+      </div>
+      </ul>
+    </scroll>
+  </div>
   <router-view/>
   <div id="bottomList">
     <ul>
@@ -39,12 +49,36 @@
 </div>
 </template>
 <script>
+import {
+  Search
+} from 'mint-ui';
+import scroll from '@/components/moduleTools/Module-Xscroll'
 export default {
   name: 'home',
   data() {
     return {
-      newMessage: false
+      newMessage: false,
+      search: false,
+      classifyshow: false,
+      tabnav: '',
+      scrollX: true,
+      scrollXWidth: 0,
+      pulldown: false,
+      classify: '',
+      thisclassify: '全部',
     }
+  },
+  components: {
+    scroll,
+  },
+  created() {
+    let id = 0;
+    let value = '全部'
+    this.classify = _$.classify()
+    this.classify.unshift({
+      id,
+      value
+    })
   },
   methods: {
     routechange() {
@@ -54,6 +88,18 @@ export default {
       }
       if (route != 'HomeIndex') {
         this.mint.Indicator.open('加载中...');
+        this.search = true;
+      } else {
+        this.mint.Indicator.close();
+        this.search = false;
+      }
+      if (route == 'HomeClassroom' || route == 'HomeSinayikao') {
+        this.classifyshow = true;
+        setTimeout(() => {
+          this._setSliderWidth();
+        }, 20)
+      } else {
+        this.classifyshow = false;
       }
       this.$store.commit('routename', route);
       let keyword = "";
@@ -64,6 +110,18 @@ export default {
       }
       this.$store.commit('search', search);
     },
+    _setSliderWidth() {
+      let item = this.$refs.itemnav;
+      let width
+      for (var i = 0; i < item.length; i++) {
+        width = item[i].clientWidth;
+      }
+      this.scrollXWidth = width
+    },
+    classifyid(item) {
+      this.thisclassify = item.value;
+      this.$store.commit('classify', item.id)
+    },
     routerTo(name) {
       this.$router.push({
         name
@@ -72,7 +130,7 @@ export default {
   },
   mounted() {
     this.routechange();
-    // this.newMessage = DEFAULT_DATA.notifyNum;
+    this.newMessage = DEFAULT_DATA.notifyNum;
   },
   watch: {
     $route() {
@@ -124,5 +182,28 @@ export default {
     position: absolute;
     left: 4rem;
     top: 0.5rem;
+}
+#homewarpper {
+    .mint-search {
+        height: auto;
+    }
+}
+.classifynavbox {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    .item-nav {
+        width: 6.25rem;
+        height: 5rem;
+        line-height: 5rem;
+        text-align: center;
+    }
+    a {
+        padding-bottom: 1rem;
+    }
+    .active a {
+        border-bottom: 0.24rem solid #3c99f7;
+        color: #3c99f7;
+    }
 }
 </style>
