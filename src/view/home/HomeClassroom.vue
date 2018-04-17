@@ -1,5 +1,5 @@
 <template>
-<div id="classroom" v-if='pageShow'>
+<section id="classroom" v-if='pageShow'>
   <v-pagescroll @getData="getData" @moreData="moreData" ref="scroller">
     <div class="big-datalist">
       <div class="banner">
@@ -30,11 +30,12 @@
       </div>
     </div>
   </v-pagescroll>
-</div>
+</section>
 </template>
 <script>
 import swiper from '@/components/ModuleSwiper/Swiper-home'
 import pagescroll from '@/components/ModuleTools/Module-PageScroll'
+const tag = "classroom_list"
 export default {
   data() {
     return {
@@ -51,21 +52,24 @@ export default {
     defaultData() {
       this.bannerlist = DEFAULT_DATA.classroom_swiper
     },
+    //更新数据
     updata(type, num) {
+      // 第一次无法执行，dom未渲染完成，也无需进行数据更新，为了避免因报错导致函数无法执行，故需要进行判断是否为undefined
       let scroller = this.$refs.scroller;
-      if (type == 'updata') {
-        setTimeout(function() {
-          scroller.refreshRestore();
-        }, 1000)
-      } else {
-        setTimeout(function() {
-          scroller.loadMoreRestore(num);
-        }, 1000)
+      if (scroller != undefined) {
+        if (type == 'updata') {
+          setTimeout(function() {
+            scroller.loadTopRestore(num);
+          }, 1000)
+        } else {
+          setTimeout(function() {
+            scroller.loadBtoomRestore(num);
+          }, 1000)
+        }
       }
-
     },
+    // 请求数据
     async getData() {
-      let tag = 'classroom_list'
       let keyword = '';
       let cnum = 0;
       let number = 0;
@@ -80,18 +84,17 @@ export default {
       if (res.status == 200) {
         this.mint.Indicator.close();
         this.datalist = res.data;
-        this.updata('updata')
+        this.updata('updata',this.datalist.length)
       } else {
         this.mint.Indicator.close();
         this.datalist = ""
-        this.scrollData.noFlag = true;
       }
     },
+    // 加载更多数据
     async moreData() {
       var params = {}
       let number = this.datalist.length;
       let last_id = this.datalist[number - 1].id;
-      let tag = 'classroom_list';
       let keyword = this.$store.state.search.keyword;
       let cnum = this.$store.state.search.classify;
       if (keyword == '') {
