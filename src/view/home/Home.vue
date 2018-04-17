@@ -1,62 +1,64 @@
 <template>
 <div class="body" id="homewarpper">
-  <mt-search cancel-text="取消" placeholder="搜索" v-if='search'>
-  </mt-search>
-  <div class="classifynavbox white_bg b-cutline" v-if='classifyshow'>
-    <scroll class="wrapper " :scrollX="scrollX" :pulldown="pulldown" :scrollXWidth="scrollXWidth" :click="true">
-      <div v-for="(item,index) in classify" class="font32 item-nav" ref="itemnav" :class="{active:thisclassify==item.value}" @click="classifyid(item)">
-        <a href="javascript:;">{{item.value}}</a>
-      </div>
-      </ul>
-    </scroll>
+  <!-- 添加心得 -->
+  <mt-popup v-model="popdownshow" position="top" :closeOnClickModal="ClickModal">
+    <newvegas></newvegas>
+  </mt-popup>
+  <header>
+    <search v-if="search" @click="routerTo('hotsearch')"></search>
+    <section class="classifynavbox white_bg b-cutline" v-if='classifyshow'>
+      <scroll class="wrapper " :scrollX="scrollX" :pulldown="pulldown" :scrollXWidth="scrollXWidth" :click="true">
+        <div v-for="(item,index) in classify" class="font32 item-nav" ref="itemnav" :class="{active:thisclassify==item.value}" @click="classifyid(item)">
+          <a href="javascript:;">{{item.value}}</a>
+        </div>
+        </ul>
+      </scroll>
+    </section>
+  </header>
+  <div id="homecontent">
+    <router-view/>
   </div>
-  <router-view/>
-  <div id="bottomList">
+  <footer id="bottomList">
     <ul>
-      <li :class="{active:activename=='HomeIndex'}" @click="routerTo('HomeIndex')">
-        <div class="navlist home">
+      <li :class="{active:activename==item.routename}" @click="routerTo(item.routename)" v-for="(item,index) in navlist">
+        <!-- <div class="redtag" v-if="newMessage==true"></div> -->
+        <div class="navlist" :class="'homeicon-'+item.iconnum">
         </div>
-        <div class="navtitle">首页</div>
+        <div class="navtitle">{{item.title}}</div>
       </li>
-      <li :class="{active:activename=='HomeClassroom'}" @click="routerTo('HomeClassroom')">
-        <div class="navlist classroom">
-        </div>
-        <div class="navtitle">课堂</div>
-      </li>
-      <li :class="{active:activename=='HomeSinayikao'}" @click="routerTo('HomeSinayikao')">
-        <div class="navlist message">
-        </div>
-        <div class="navtitle">艺考圈</div>
-      </li>
-      <li :class="{active:activename=='HomeSchool'}" @click="routerTo('HomeSchool')">
-        <div class="navlist school">
-        </div>
-        <div class="navtitle">院校</div>
-      </li>
-      <li :class="{active:activename=='HomeInstitution'}" @click="routerTo('HomeInstitution')">
-        <div class="navlist jg">
-        </div>
-        <div class="navtitle">机构</div>
-      </li>
-      <!-- <li :class="{active:activename=='home_user'}" @click="routerTo('home_user')">
-        <div class="redtag" v-if="newMessage==true"></div>
-        <div class="navlist userimg">
-        </div>
-        <div class="navtitle">我的</div>
-      </li> -->
     </ul>
-  </div>
+  </footer>
 </div>
 </template>
 <script>
-import {
-  Search
-} from 'mint-ui';
-import scroll from '@/components/moduleTools/Module-Xscroll'
+import scroll from '@/components/ModuleTools/Module-Xscroll'
+import search from '@/components/ModuleTools/Module-Searchinput'
+import newvegas from '@/components/ModuleDataView/Module-NewVegas'
 export default {
   name: 'home',
   data() {
     return {
+      navlist: [{
+        title: '首页',
+        routename: 'HomeIndex',
+        iconnum: '1'
+      }, {
+        title: '课堂',
+        routename: 'HomeClassroom',
+        iconnum: '2'
+      }, {
+        title: '艺考圈',
+        routename: 'HomeSinayikao',
+        iconnum: '3'
+      }, {
+        title: '院校',
+        routename: 'HomeSchool',
+        iconnum: '4'
+      }, {
+        title: '机构',
+        routename: 'HomeInstitution',
+        iconnum: '5'
+      }],
       newMessage: false,
       search: false,
       classifyshow: false,
@@ -66,10 +68,14 @@ export default {
       pulldown: false,
       classify: '',
       thisclassify: '全部',
+      popdownshow: false,
+      ClickModal:false
     }
   },
   components: {
     scroll,
+    search,
+    newvegas
   },
   created() {
     let id = 0;
@@ -135,16 +141,49 @@ export default {
   watch: {
     $route() {
       this.routechange();
+    },
+    // 如果发生改变则赋值
+    popdownboxStatus: function(newVal, oldVal) {
+      if (newVal != oldVal) {
+        this.popdownshow = newVal;
+        console.log(this.mint.Popup)
+      }
     }
   },
   computed: {
     activename: function() {
       return this.$store.state.routename;
+    },
+    // 实时监测vuex里显示状态的数据变化
+    popdownboxStatus: function() {
+      return this.$store.state.popdownshow;
+    },
+    mintPopChange(){
+      console.log(this.mint.Popup)
     }
-  }
+  },
 }
 </script>
 <style scoped lang="less">
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+#homecontent {
+    width: 100%;
+    overflow-y: scroll;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
 #bottomList {
     position: fixed;
     bottom: 0;
@@ -205,5 +244,9 @@ export default {
         border-bottom: 0.24rem solid #3c99f7;
         color: #3c99f7;
     }
+}
+.mint-popup-top {
+    width: 100%;
+    height: auto;
 }
 </style>
