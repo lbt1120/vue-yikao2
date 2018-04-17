@@ -1,42 +1,52 @@
 @basecolor: #3c99f7;
 
-.home {
-  background: url("../image/icon/white-home.png") no-repeat;
+.homeicon-1 {
+  background: url("../image/icon/homeicon-1.png") no-repeat;
   background-size: 100%;
 }
 
-.active .home {
-  background: url("../image/icon/blue-home.png") no-repeat;
+.active .homeicon-1 {
+  background: url("../image/icon/blue-homeicon-1.png") no-repeat;
   background-size: 100%;
 }
 
-.classroom {
-  background: url("../image/icon/white-class.png") no-repeat;
+.homeicon-2 {
+  background: url("../image/icon/homeicon-2.png") no-repeat;
   background-size: 100%;
 }
 
-.active .classroom {
-  background: url("../image/icon/blue-class.png") no-repeat;
+.active .homeicon-2 {
+  background: url("../image/icon/blue-homeicon-2.png") no-repeat;
   background-size: 100%;
 }
 
-.message {
-  background: url("../image/icon/white-message.png") no-repeat;
+.homeicon-3 {
+  background: url("../image/icon/homeicon-3.png") no-repeat;
   background-size: 100%;
 }
 
-.active .message {
-  background: url("../image/icon/blue-message.png") no-repeat;
+.active .homeicon-3 {
+  background: url("../image/icon/blue-homeicon-3.png") no-repeat;
   background-size: 100%;
 }
 
-.jg {
-  background: url("../image/icon/white-jg.png") no-repeat;
+.homeicon-4 {
+  background: url("../image/icon/homeicon-4.png") no-repeat;
   background-size: 100%;
 }
 
-.active .jg {
-  background: url("../image/icon/blue-jg.png") no-repeat;
+.active .homeicon-4 {
+  background: url("../image/icon/blue-homeicon-4.png") no-repeat;
+  background-size: 100%;
+}
+
+.homeicon-5 {
+  background: url("../image/icon/homeicon-5.png") no-repeat;
+  background-size: 100%;
+}
+
+.active .homeicon-5 {
+  background: url("../image/icon/blue-homeicon-5.png") no-repeat;
   background-size: 100%;
 }
 
@@ -47,16 +57,6 @@
 
 .active .userimg {
   background: url("../image/icon/blue-user.png") no-repeat;
-  background-size: 100%;
-}
-
-.school {
-  background: url("../image/icon/white-school.png") no-repeat;
-  background-size: 100%;
-}
-
-.active .school {
-  background: url("../image/icon/blue-school.png") no-repeat;
   background-size: 100%;
 }
 
@@ -72,6 +72,7 @@
   color: @basecolor;
 }
 /*数据样式-列表*/
+
 .list-box ul,
 .list-box ul li,
 .table-box ul,
@@ -113,4 +114,31 @@
 .list-intro {
   overflow: hidden;
   line-height: 2.1rem;
+}
+/*评论弹出框*/
+
+.comment-content {
+  padding-bottom: 4.3rem;
+}
+
+textarea {
+  margin: 1.8rem 0;
+  width: 100%;
+  height: 8.5rem;
+}
+
+.commentwapper {
+  .title-box {
+    height: 5rem;
+    line-height: 5rem;
+  }
+}
+
+.comment-bottom {
+  overflow: hidden;
+}
+
+.addcommentimg {
+  width: 8rem;
+  height: 8rem;
 }

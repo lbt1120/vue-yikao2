@@ -46,7 +46,6 @@
   background-size: 100%;
 }
 
-
 /*首页浮动按钮*/
 
 .home-sliderbox {
@@ -68,28 +67,15 @@
   background-size: 100%;
 }
 
-
-
-
-
-
-
 /*文本右对齐*/
 
 .t-right {
   text-align: right;
 }
 
-
-
-
-
-
-
 /*删除input外边框*/
 
-input,
-textarea {
+input, textarea {
   border: none;
   outline: none;
 }
@@ -97,12 +83,6 @@ textarea {
 textarea {
   resize: none;
 }
-
-
-
-
-
-
 
 /*观看人数图片*/
 
@@ -113,32 +93,21 @@ textarea {
   background-size: 100%;
 }
 
-
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #a4a4a4;
 }
 
-input:-moz-placeholder,
-textarea:-moz-placeholder {
+input:-moz-placeholder, textarea:-moz-placeholder {
   color: #a4a4a4;
 }
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   color: #a4a4a4;
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #a4a4a4;
 }
-
-
-
-
-
-
 
 /*历史记录图片*/
 
@@ -148,12 +117,6 @@ textarea:-ms-input-placeholder {
   background: url('../image/icon/history.png') no-repeat;
   background-size: 100%;
 }
-
-
-
-
-
-
 
 /*点赞*/
 
@@ -167,10 +130,6 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
 /*收藏*/
 
 .icon-collect {
@@ -182,10 +141,6 @@ textarea:-ms-input-placeholder {
   background: url('../image/icon/uncollect.png') no-repeat;
   background-size: 100%;
 }
-
-
-
-
 
 /*我的页面图标*/
 
@@ -219,10 +174,6 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
 /*签到背景*/
 
 .signinbg {
@@ -235,10 +186,6 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
 /*评论*/
 
 .dialogbox {
@@ -246,33 +193,12 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
-
-
 /*删除按钮*/
 
 .deletebtn {
   background: url('../image/icon/deletebtn.png') no-repeat;
   background-size: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*点赞评论额外框*/
 
@@ -309,19 +235,10 @@ textarea:-ms-input-placeholder {
   margin-right: 1.2rem;
 }
 
-.appraise-other .goodimg,
-.appraise-other .dialogbox {
+.appraise-other .goodimg, .appraise-other .dialogbox {
   width: 2.2rem;
   height: 2.2rem;
 }
-
-
-
-
-
-
-
-
 
 /*向下箭头*/
 
@@ -330,28 +247,12 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
-
-
-
-
 /*微信*/
 
 .wximg {
   background: url('../image/icon/wximg.png') no-repeat;
   background-size: 100%;
 }
-
-
-
-
-
-
-
-
 
 /*放大镜*/
 
@@ -360,21 +261,12 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
-
-
-
-
 /*添加图片*/
 
 .addpic {
   background: url('../image/icon/addpic.png') no-repeat;
   background-size: 100%;
 }
-
 
 /*手机*/
 
@@ -383,7 +275,6 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
 /*金币*/
 
 .goldimg {
@@ -391,14 +282,12 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
 /*圆点标记*/
 
 .tag {
   background: url('../image/icon/tag.png') no-repeat;
   background-size: 100%;
 }
-
 
 /*标题前方竖行*/
 
@@ -412,7 +301,6 @@ textarea:-ms-input-placeholder {
   height: 1.2rem;
   margin-top: .3rem;
 }
-
 
 /*关闭按钮*/
 
@@ -436,14 +324,6 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
-
-
-
-
 /*勾选*/
 
 .havecheck {
@@ -455,13 +335,6 @@ textarea:-ms-input-placeholder {
   background: url('../image/icon/uncheck.png') no-repeat;
   background-size: 100%;
 }
-
-
-
-
-
-
-
 
 /*星星*/
 
@@ -475,12 +348,6 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-
-
-
-
-
-
 /*密码*/
 
 .keyicon {
@@ -493,16 +360,10 @@ textarea:-ms-input-placeholder {
   background-size: 100%;
 }
 
-.uploadpicture{
+.uploadpicture {
   background: url('../image/icon/uploadpicture.png') no-repeat;
   background-size: 100%;
 }
-
-
-
-
-
-
 
 /*分割线*/
 
@@ -513,14 +374,6 @@ textarea:-ms-input-placeholder {
 .t-cutline {
   border-top: .05rem solid #e0e0e0;
 }
-
-
-
-
-
-
-
-
 
 /*多余文字变成省略号*/
 
@@ -538,12 +391,6 @@ textarea:-ms-input-placeholder {
 .row2 {
   -webkit-line-clamp: 2;
 }
-
-
-
-
-
-
 
 /*数据列表公共样式*/
 
@@ -590,12 +437,6 @@ textarea:-ms-input-placeholder {
   width: 100%;
 }
 
-
-
-
-
-
-
 /*内容未找到样式*/
 
 .datanotfound {
@@ -623,12 +464,6 @@ textarea:-ms-input-placeholder {
   color: #999999;
 }
 
-
-
-
-
-
-
 /*没有消息*/
 
 .nomessage {
@@ -639,12 +474,6 @@ textarea:-ms-input-placeholder {
   margin-bottom: 1.6rem;
 }
 
-
-
-
-
-
-
 /*没有购买课程*/
 
 .noclass {
@@ -653,12 +482,6 @@ textarea:-ms-input-placeholder {
   width: 100%;
   height: 10.5rem;
 }
-
-
-
-
-
-
 
 /*提交按钮*/
 
@@ -671,26 +494,12 @@ textarea:-ms-input-placeholder {
   font-size: 1.6rem;
 }
 
-
-
-
-
-
-
 /*更多按钮样式*/
 
 .morebtn {
   background-color: #daecff;
   color: #3c99f7;
 }
-
-
-
-
-
-
-
-
 
 /*弹出框（学校查找、发表评论）*/
 
@@ -737,24 +546,12 @@ textarea:-ms-input-placeholder {
   width: 100%;
 }
 
-
-
-
-
-
-
 /*内容页面可动*/
 
 .content-scroll {
   position: absolute;
   width: 100%;
 }
-
-
-
-
-
-
 
 /*列表样式*/
 
@@ -777,17 +574,10 @@ textarea:-ms-input-placeholder {
   border-bottom: none;
 }
 
-
-
-
-
-
-
 /*
 .li-tag .tag-title {
   font-size: 1.33rem;
 }*/
-
 
 /*多内容样式清空*/
 
@@ -797,16 +587,9 @@ textarea:-ms-input-placeholder {
   padding: 1.2rem 0;
 }
 
-
-
-
-
-
-
 /*.li-tag .tag-content {
   width: 80%;
 }*/
-
 
 /*提交按钮*/
 
@@ -814,24 +597,11 @@ textarea:-ms-input-placeholder {
   background-color: #3c99f7;
 }
 
-
-
-
-
-
-
 /*底部按钮悬浮页面样式*/
 
-.orderwapper,
-.classdetailswapper {
+.orderwapper, .classdetailswapper {
   padding-bottom: 6.2rem
 }
-
-
-
-
-
-
 
 /*课程列表、结构列表公用样式*/
 
@@ -862,16 +632,9 @@ textarea:-ms-input-placeholder {
   margin-bottom: 1.2rem;
 }
 
-.big-datalist .list-profession,
-.list-profession {
+.big-datalist .list-profession, .list-profession {
   color: #999999;
 }
-
-
-
-
-
-
 
 /*视频列表标签*/
 
@@ -883,12 +646,6 @@ textarea:-ms-input-placeholder {
   border-radius: .3rem;
 }
 
-
-
-
-
-
-
 /*横向列表*/
 
 .scrollX-group {
@@ -898,12 +655,6 @@ textarea:-ms-input-placeholder {
 .scrollX .item-nav {
   display: inline-block;
 }
-
-
-
-
-
-
 
 /*用户头像*/
 
@@ -926,12 +677,6 @@ textarea:-ms-input-placeholder {
   margin-top: .3rem;
   overflow: hidden;
 }
-
-
-
-
-
-
 
 /*用户信息展示*/
 
@@ -966,13 +711,6 @@ textarea:-ms-input-placeholder {
   padding: .12rem;
 }
 
-
-
-
-
-
-
-
 /*消息列表*/
 
 .messagewapper li {
@@ -998,12 +736,6 @@ textarea:-ms-input-placeholder {
   line-height: 2.4rem;
 }
 
-
-
-
-
-
-
 /*标签页宽度设置*/
 
 .tab2 ul li {
@@ -1014,13 +746,6 @@ textarea:-ms-input-placeholder {
   width: 33.33%;
   position: relative;
 }
-
-
-
-
-
-
-
 
 /*消息编辑*/
 
