@@ -1,8 +1,10 @@
 <template>
 <div class="wapper homewapper">
+  <!-- 轮播图 -->
   <section class="banner">
     <v-swiper :datalist="bannerlist"></v-swiper>
   </section>
+  <!-- 用户信息 -->
   <section class="databox white_bg user" :class="userLogin==false?'unLogin':'isLogin'">
     <div class="title-box" v-if="userLogin==false">
       <div class="user-headimg" @click="routeTo(0)"></div>
@@ -26,6 +28,7 @@
       </div>
     </div>
   </section>
+  <!-- 循环标签列表 -->
   <section v-for="(item,index) in tagdata" class="databox white_bg" :class="item.datatable?'':'entrance'">
     <div v-if='item.datatable'>
       <div class="title-box">
