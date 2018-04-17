@@ -1,9 +1,9 @@
 <template>
   <div class="scrollX" ref="scrollX">
-    <div class="scrollX-group" ref="scrollXGroup">
+    <nav class="scrollX-group" ref="scrollXGroup">
       <slot>
       </slot>
-    </div>
+    </nav>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -181,3 +181,6 @@ export default {
 }
 
 </script>
+<style scoped lang="less">
+
+</style>
