@@ -1,69 +1,65 @@
 <template>
 <div class="scrollpage">
-  <scroller use-pullup :pullup-config="pullupDefaultConfig" @on-pullup-loading="loadMore" use-pulldown :pulldown-config="pulldownDefaultConfig" @on-pulldown-loading="refresh" lock-x ref="scrollerBottom" height="-140">
-    <slot>
-    </slot>
-  </scroller>
+  <mt-loadmore :top-method="loadTop" @top-status-change="handleTopChange" :bottom-method="loadBottom" ref="loadmore" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
+    <div slot="top" class="mint-loadmore-top">
+      <span v-show="topStatus === 'pull'" :class="{ 'rotate': topStatus === 'pull' }">下拉刷新</span>
+      <span v-show="topStatus === 'drop'" :class="{ 'rotate': topStatus === 'drop' }">释放刷新</span>
+      <span v-show="topStatus === 'loading'">正在加载...</span>
+    </div>
+    <slot></slot>
+    <div slot="bottom" class="mint-loadmore-bottom">
+      <span v-show="datanum !== 0">正在加载...</span>
+      <span v-show="datanum === 0">没有更多数据了</span>
+    </div>
+  </mt-loadmore>
 </div>
 </template>
 <script>
 import {
-  Scroller,
-} from 'vux'
-
-const pulldownDefaultConfig = {
-  content: '下拉刷新',
-  height: 40,
-  autoRefresh: false,
-  downContent: '下拉刷新',
-  upContent: '释放后刷新',
-  loadingContent: '正在刷新...',
-  clsPrefix: 'xs-plugin-pulldown-'
-}
-const pullupDefaultConfig = {
-  content: '上拉加载更多',
-  pullUpHeight: 60,
-  height: 40,
-  autoRefresh: false,
-  downContent: '释放后加载',
-  upContent: '上拉加载更多',
-  loadingContent: '加载中...',
-  clsPrefix: 'xs-plugin-pullup-'
-}
+  Loadmore,
+  InfiniteScroll
+} from 'mint-ui';
 export default {
   components: {
-    Scroller
+    Loadmore
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.$refs.scrollerBottom.reset({
-        top: 0
-      })
-    })
-  },
+  mounted() {},
   data() {
     return {
-      list: [],
-      pullupDefaultConfig: pullupDefaultConfig,
-      pulldownDefaultConfig: pulldownDefaultConfig
+      topStatus: '',
+      datanum: 0
     }
   },
   methods: {
-    refresh() {
+    handleTopChange(status) {
+      this.topStatus = status;
+    },
+    loadTop() {
       this.$emit('getData')
     },
     loadMore() {
+      this.loading = true;
       this.$emit('moreData')
     },
-    refreshRestore() {
-      this.$refs.scrollerBottom.enablePullup()
-      this.$refs.scrollerBottom.donePulldown()
+    loadBottom() {
+      console.log(2)
     },
-    loadMoreRestore(num) {
+    isLoading(num) {
       if (num < 5) {
-        this.$refs.scrollerBottom.disablePullup()
+        this.loading = true;
+        this.datanum = 0
+      } else {
+        this.loading = false;
+        this.datanum = Number(num)
       }
-      this.$refs.scrollerBottom.donePullup()
+      console.log(this.datanum)
+    },
+    loadTopRestore(num) {
+      this.isLoading(num);
+      this.$refs.loadmore.onTopLoaded();
+    },
+    loadBtoomRestore(num) {
+      this.isLoading(num);
     }
   }
 }
@@ -74,8 +70,13 @@ export default {
     top: 10rem;
     width: 100%;
     background-color: #fff;
-    .datatag{
-      padding-bottom: 2.5rem;
+    .mint-loadmore-bottom,
+    .mint-loadmore-top {
+        color: #3c99f7;
+        font-size: 1.4rem;
+    }
+    .mint-loadmore-bottom {
+        margin-bottom: 1rem;
     }
 }
 </style>
