@@ -11,6 +11,10 @@ import wxTitle from 'vue-wechat-title'
 import verify from '../static/js/vue-verify'
 import screen from '../static/js/vue-screen'
 import _$ from '../static/js/vue-tools'
+
+// 模板全局调用
+import notfound from '@/view/NotFound/View-NotFound'
+import pagescroll from '@/components/ModuleTools/Module-PageScroll'
 // mint-ui
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
@@ -32,6 +36,8 @@ Vue.component('picker', Picker)
 Vue.component('popup-picker', PopupPicker)
 Vue.component('scroller', Scroller)
 Vue.component('x-textarea', XTextarea)
+Vue.component('notfound', notfound)
+Vue.component('pagescroll', pagescroll)
 
 Vue.use(AlertPlugin)
 Vue.use(LoadingPlugin)
@@ -128,7 +134,7 @@ const store = new Vuex.Store({
       "s_county": 1173,
       "address": "你好",
       "charge": null,
-      "curriculum": [3],
+      "curriculum": [3,4,5],
       "propaganda": null,
       "introduce": "链接",
       "cover": "https:\/\/yikao.baolanbb.com\/attachment\/mposter_thumb\/20180403170802ZQLUvCgM.jpg",
