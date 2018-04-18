@@ -92,7 +92,7 @@ export default {
       if (typeof(route) != 'string') {
         route = "home"
       }
-      if (route != 'HomeIndex') {
+      if (route != 'HomeIndex'&&route != 'HomeUser') {
         this.mint.Indicator.open('加载中...');
         this.search = true;
       } else {
