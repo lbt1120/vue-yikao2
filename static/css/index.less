@@ -69,10 +69,9 @@
 }
 
 .active .navtitle {
-  color: @basecolor;
+  color: #3c99f7;
 }
 /*数据样式-列表*/
-
 .list-box ul,
 .list-box ul li,
 .table-box ul,
@@ -82,10 +81,10 @@
 
 .list-box ul li {
   padding: 0.85rem 0;
+}
 
-  &:last-child {
-    border-bottom: none;
-  }
+.list-box ul li:last-child {
+  border-bottom: none;
 }
 
 .list-box .dataimg {
@@ -116,7 +115,6 @@
   line-height: 2.1rem;
 }
 /*评论弹出框*/
-
 .comment-content {
   padding-bottom: 4.3rem;
 }
@@ -141,4 +139,19 @@ textarea {
 .addcommentimg {
   width: 8rem;
   height: 8rem;
+}
+
+.transition-5s {
+  transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+
+.active .arrow {
+  transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
 }
