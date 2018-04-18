@@ -6,7 +6,7 @@ import HomeSchool from '@/view/home/HomeSchool'
 import HomeInstitution from '@/view/home/HomeInstitution'
 import HomeUser from '@/view/home/HomeUser'
 // // 更多信息
-// import moreDataList from '@/view/moreDataList/Moredatalist'
+import moreData from '@/view/MoreData/Moredatalist'
 
 export default [{
   path: '/',
@@ -54,10 +54,8 @@ export default [{
       title: '艺考院校'
     }
   }]
-}
-// , {
-//   path: '/moredata',
-//   name: 'moreDataList',
-//   component: moreDataList,
-// }
-]
+}, {
+  path: '/moredata',
+  name: 'moreData',
+  component: moreData,
+}]
