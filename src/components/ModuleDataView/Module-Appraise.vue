@@ -122,34 +122,34 @@ export default {
     this.defaultData();
   },
   watch: {
-    likebtn: function(newVal, oldVal) {
+    likebtn(newVal, oldVal) {
       if (newVal != oldVal) {
         this.likebtnIs = newVal
       }
     },
-    listtitle: function(newVal, oldVal) {
+    listtitle(newVal, oldVal) {
       if (newVal != oldVal) {
         this.listtitleIs = newVal
       }
     },
-    deletebtn: function(newVal, oldVal) {
+    deletebtn(newVal, oldVal) {
       if (newVal != oldVal) {
         this.deletebtnIs = newVal
       }
     },
-    titletype: function(newVal, oldVal) {
+    titletype(newVal, oldVal) {
       if (newVal != oldVal) {
         this.titleType = newVal
       }
     },
-    reply: function(newVal, oldVal) {
+    reply(newVal, oldVal) {
       if (newVal != oldVal) {
         this.replyIs = newVal
       }
     },
   },
   methods: {
-    defaultData: function() {
+    defaultData() {
       this.likebtnIs = this.likebtn;
       this.listtitleIs = this.listtitle;
       this.deletebtnIs = this.deletebtn;
@@ -159,7 +159,7 @@ export default {
         this.canRouteTo = this.canRoute;
       }
     },
-    routerTo: function(item) {
+    routerTo(item) {
       if (this.canRouteTo) {
         let data = item
         let id = item.id
@@ -172,7 +172,7 @@ export default {
         this.$store.commit('contentid', id)
       }
     },
-    replyid: function(item, reply) {
+    replyid(item, reply) {
       if (reply.self) {
         this.deleteReplyify(item.id, reply.id);
       } else {
@@ -190,7 +190,7 @@ export default {
         this.popupboxshow();
       }
     },
-    userIndex: function(item) {
+    userIndex(item) {
       this.$router.push({
         name: 'contenttext',
         params: {
