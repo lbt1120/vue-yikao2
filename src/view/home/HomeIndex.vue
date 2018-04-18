@@ -94,7 +94,7 @@ export default {
         },
         {
           title: "功能模块",
-          num: 5,
+          num: 4,
           template: false,
           datatable: false,
         },
@@ -155,27 +155,23 @@ export default {
         },
         {
           num: 1,
-          name: 'moreDataList'
+          name: 'moreData'
         },
         {
           num: 2,
-          name: 'home_classroom'
+          name: 'HomeClassroom'
         },
         {
           num: 3,
-          name: 'home_institution'
+          name: 'HomeInstitution'
         },
         {
           num: 4,
-          name: 'moreDataList'
-        },
-        {
-          num: 5,
           name: 'repository-home'
         },
         {
-          num: 6,
-          name: 'home_user'
+          num: 5,
+          name: 'HomeUser'
         },
       ]
       var pathname;
