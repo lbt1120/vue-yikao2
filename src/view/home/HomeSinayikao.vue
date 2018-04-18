@@ -1,20 +1,20 @@
 <template>
 <section id="Sinayikao" v-if='pageShow'>
-  <v-pagescroll @getData="getData" @moreData="moreData" ref="scroller">
+  <pagescroll @getData="getData" @moreData="moreData" ref="scroller" v-if="datalist!=''">
     <appraise :likebtn="likebtn" :listtitle="listtitle" :datalist="datalist"></appraise>
-  </v-pagescroll>
+  </pagescroll>
   <div class="newVegas home-sliderbox" @click="popdownboxshow"></div>
+  <notfound v-if="datalist==''">未找到相关圈子</notfound>
 </section>
 </template>
 <script>
-import pagescroll from '@/components/ModuleTools/Module-PageScroll';
 import appraise from '@/components/ModuleDataView/Module-Appraise';
 import popdown from '@/components/ModuleTools/Module-PopDown';
 const tag = "artcircle_list"
 export default {
   data() {
     return {
-      likebtn: true,
+      likebtn: false,
       listtitle: false,
       datalist: "",
       bannerlist: "",
@@ -23,7 +23,6 @@ export default {
     }
   },
   components: {
-    "v-pagescroll": pagescroll,
     appraise,
     popdown
   },
@@ -48,7 +47,9 @@ export default {
       if (user != '') {
         this.$store.commit('popdownshow', true);
       } else {
-        this.$router.push({ name: 'login' })
+        this.$router.push({
+          name: 'login'
+        })
       }
     },
     // 请求数据
