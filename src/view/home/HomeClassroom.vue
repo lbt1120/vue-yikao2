@@ -1,6 +1,6 @@
 <template>
 <section id="classroom" v-if='pageShow'>
-  <v-pagescroll @getData="getData" @moreData="moreData" ref="scroller">
+  <pagescroll @getData="getData" @moreData="moreData" ref="scroller" v-if="datalist!=''">
     <div class="big-datalist">
       <div class="banner">
         <v-swiper :datalist="bannerlist"></v-swiper>
@@ -29,12 +29,12 @@
         </div>
       </div>
     </div>
-  </v-pagescroll>
+  </pagescroll>
+  <notfound v-if="datalist==''">未找到相关课程</notfound>
 </section>
 </template>
 <script>
 import swiper from '@/components/ModuleSwiper/Swiper-home'
-import pagescroll from '@/components/ModuleTools/Module-PageScroll'
 const tag = "classroom_list"
 export default {
   data() {
@@ -46,7 +46,6 @@ export default {
   },
   components: {
     "v-swiper": swiper,
-    "v-pagescroll": pagescroll,
   },
   methods: {
     defaultData() {
@@ -84,7 +83,7 @@ export default {
       if (res.status == 200) {
         this.mint.Indicator.close();
         this.datalist = res.data;
-        this.updata('updata',this.datalist.length)
+        this.updata('updata', this.datalist.length)
       } else {
         this.mint.Indicator.close();
         this.datalist = ""
@@ -115,9 +114,13 @@ export default {
       }
       let res = await _api.search(params)
       let moreData = res.data;
-      this.updata('more', moreData.length)
-      for (var i = 0; i < moreData.length; i++) {
-        this.datalist.push(moreData[i])
+      if (res.status == 200) {
+        this.updata('more', moreData.length)
+        for (var i = 0; i < moreData.length; i++) {
+          this.datalist.push(moreData[i])
+        }
+      } else {
+        this.updata('more', 0)
       }
     },
   },
