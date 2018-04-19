@@ -32,10 +32,10 @@ import {
   XTextarea
 } from 'vux'
 
-Vue.component('picker', Picker)
-Vue.component('popup-picker', PopupPicker)
-Vue.component('scroller', Scroller)
-Vue.component('x-textarea', XTextarea)
+// Vue.component('picker', Picker)
+// Vue.component('popup-picker', PopupPicker)
+// Vue.component('scroller', Scroller)
+// Vue.component('x-textarea', XTextarea)
 Vue.component('notfound', notfound)
 Vue.component('pagescroll', pagescroll)
 
