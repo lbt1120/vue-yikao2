@@ -16,7 +16,7 @@
         <div class="tag-arrow f-left"></div>
       </div>
     </div>
-    <div class="title-box" @click="routeTo(6)" v-else>
+    <div class="title-box" @click="routeTo(5)" v-else>
       <div class="user-headimg">
         <img :src="user.avatar" alt="">
       </div>
@@ -134,7 +134,6 @@ export default {
   },
   methods: {
     routeTo(type) {
-      console.log(type)
       var data = null,
         pathname = 'home_index';
       pathname = this.apiArr(type).pathname;
