@@ -11,7 +11,7 @@
           {{titleType}}
         </div>
       </li>
-      <li class="b-cutline white_bg" v-for="(item,index) in datalist">
+      <li class="b-cutline white_bg" v-for="(item,index) in datalistArr">
         <div class="datatag" @click="routerTo(item)">
           <div class="appraise-top">
             <div class="user-headimg f-left">
@@ -34,8 +34,6 @@
             <div class="f-right" v-if="deletebtnIs">
               分类：
               <span>{{item.classid|classify}}</span>
-              <!-- <span v-for="(classname,index) in item.classid" v-if="index<item.classid.length-1">{{classname|classify}}、</span>
-                <span v-for="(classname,index) in item.classid" v-else>{{classname|classify}}</span> -->
             </div>
           </div>
           <div class="appraise-bottom">
@@ -103,12 +101,13 @@ export default {
   name: 'contentlist',
   data() {
     return {
-      likebtnIs: false,
+      likebtnIs: true,
       listtitleIs: false,
       deletebtnIs: false,
       titleType: '',
       replyIs: false,
       canRouteTo: true,
+      datalistArr:[],
       //向上滑窗口初始值
       popupwapper: {
         //内容（checklist-选择，comment-评论）
@@ -155,6 +154,7 @@ export default {
       this.deletebtnIs = this.deletebtn;
       this.titleType = this.titletype;
       this.replyIs = this.reply;
+      this.datalistArr = this.datalist
       if (this.canRoute != undefined) {
         this.canRouteTo = this.canRoute;
       }
