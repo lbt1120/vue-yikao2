@@ -14,7 +14,7 @@ export default [{
       name: 'contentvideo',
       component: contentvideo
     }, {
-      path: '/content/text/:id',
+      path: '/content/text/:docid',
       name: 'contenttext',
       component: contenttext,
       // meta: { title: ':title' }

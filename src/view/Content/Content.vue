@@ -1,16 +1,16 @@
 <template>
 <div class="contentwapper wapper">
-  <router-view @iscollect="iscollect" />
+  <router-view @iscollect="iscollect" @commentuser="commentuser" />
   <div class="content-bottomtag white_bg t-cutline" v-if="contentpage=='contentvideo'">
-    <div class="content-commenthint f-left" @click="popupboxshow">我来说一说</div>
+    <div class="content-commenthint f-left" @click="popupboxshow(1)">我来说一说</div>
     <div class="f-right collected font32" @click="collect(1)" :class="isCollect=='收藏'?'uncollected':'havecollected'">{{isCollect}}</div>
   </div>
-  <div class="content-bottomtag white_bg t-cutline" v-if="contentpage=='contenttext'" @click="popupboxshow">
+  <div class="content-bottomtag white_bg t-cutline" v-if="contentpage=='contenttext'" @click="popupboxshow(1)">
     <div class="content-commenthint f-left">评论楼主</div>
     <div class="havecollected  f-right collected font32">评论</div>
   </div>
   <mt-popup v-model="popupshow" position="bottom" :modal="true">
-    <comment></comment>
+    <comment :option="option" @popupboxhidden="popupboxhidden"></comment>
   </mt-popup>
 </div>
 </template>
@@ -22,28 +22,40 @@ export default {
     return {
       contentpage: 'contentvideo',
       isCollect: '收藏',
-      popupshow: false
+      popupshow: false,
+      option: "",
     }
   },
   components: {
     comment
   },
   methods: {
-    popupboxshow() {
-      this.popupshow = true;
+    popupboxshow(option) {
       let verify = this.verify.isLogin()
       if (verify) {
-        let uid = 0;
-        let user = '楼主'
-        let params = {
-          uid,
-          user
-        };
+        if (option !== 1) {
+          this.option = option
+        } else {
+          let uid = 0;
+          let user = '楼主'
+          let params = {
+            uid,
+            user
+          }
+          this.option = params
+        }
+        this.popupshow = true;
       } else {
         this.$router.push({
           name: 'login'
         })
       }
+    },
+    popupboxhidden() {
+      this.popupshow = false;
+    },
+    commentuser(option) {
+      this.popupboxshow(option)
     },
     routechange() {
       console.log(this.$route.name)
@@ -91,8 +103,8 @@ export default {
 }
 </script>
 <style lang='less'>
-.mint-popup-bottom{
-  width: 100%;
+.mint-popup-bottom {
+    width: 100%;
 }
 .content-bottomtag {
     position: fixed;

@@ -51,6 +51,15 @@ export default {
     defaultData() {
       this.bannerlist = DEFAULT_DATA.classroom_swiper
     },
+    routerTo: function(id) {
+      let docid = id;
+      this.$router.push({
+        name: 'contentvideo',
+        params: {
+          docid
+        }
+      })
+    },
     //更新数据
     updata(type, num) {
       // 第一次无法执行，dom未渲染完成，也无需进行数据更新，为了避免因报错导致函数无法执行，故需要进行判断是否为undefined

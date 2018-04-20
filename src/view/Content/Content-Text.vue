@@ -1,7 +1,7 @@
 <template>
   <section class="contenttextwapper">
     <div class="content-top">
-      <v-appraise :datalist="contentData" :reply="true"></v-appraise>
+      <v-appraise :datalist="contentData" :reply="true" @commentuser="commentuser"></v-appraise>
     </div>
   </section>
 </template>
@@ -23,12 +23,14 @@ export default {
   },
   methods: {
     async routechange() {
-      let mid = this.$route.params.id;
+      let mid = this.$route.params.docid;
       let params={mid}
       let res = await _api.text_detail(params)
       this.contentData.push(res.data[0]);
-      console.log()
     },
+    commentuser(option) {
+      this.$emit('commentuser',option)
+    }
   },
 }
 

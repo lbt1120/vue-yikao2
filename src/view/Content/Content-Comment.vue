@@ -31,12 +31,13 @@ export default {
   props: ['option'],
   mounted() {
     this.routerChange();
+    this.mid = this.$route.params.docid;
   },
   methods: {
-    submit: async function() {
+    async submit() {
       var params
       if (this.pagename == 'contenttext') {
-        let mid = this.$store.state.contentid;
+        let mid = this.mid;
         let content = this.content;
         let act = 'comment'
         let reply_uid = this.usercid
@@ -49,35 +50,37 @@ export default {
           reply_cid
         }
       } else {
-        let mid = this.$store.state.contentid;
+        let mid = this.mid;
         let content = this.content;
         params = {
           content,
           mid
         }
       }
+      this.$emit('popupboxhidden')
+      this.mint.Indicator.open({
+        text: '评论中...',
+        spinnerType: 'snake'
+      });
       const res = await this.axios.post(this.url, params)
-      if (res.data.status == 200) {
+      if (res.status == 200) {
         let type = 4
         let params = {
           type
         }
         let task = await _api.intNonu(params)
         this.mint.Toast('评论成功')
-        this.mint.Indicator.close()
-        this.$store.commit('contentText', res.data.data);
+        this.mint.Indicator.close();
         this.dataDefault();
-        this.popuphidden();
+      } else {
+        this.mint.Indicator.close();
+        this.mint.Toast('评论失败')
       }
-    },
-    popuphidden: function() {
-      this.$store.commit('popupshow', false);
-      this.dataDefault();
     },
     dataDefault: function() {
       this.content = "";
     },
-    routerChange: function() {
+    routerChange() {
       let name = this.$route.name;
       this.pagename = name
       if (name == 'contenttext') {
@@ -89,20 +92,17 @@ export default {
   },
   watch: {
     option: function(newVal, oldVal) {
-      console.log(newVal)
+      console.log(newVal, oldVal)
       let _this = this;
-      this.usercid = newVal[0].uid;
-      this.cid = newVal[0].cid
+      this.usercid = newVal.uid;
+      this.cid = newVal.cid
       if (this.usercid != 0) {
-        this.placeholder = '回复：' + newVal[0].user
+        this.placeholder = '回复：' + newVal.user
       } else {
         this.placeholder = '评论：'
       }
-      // if (this.usercid ==0&&newVal[0].uid != oldVal[0].uid) {
-      //    this.placeholder = '评论：'
-      // }
       if (oldVal != '') {
-        if (newVal[0].uid != oldVal[0].uid) {
+        if (newVal.uid != oldVal.uid) {
           _this.dataDefault();
         }
       }

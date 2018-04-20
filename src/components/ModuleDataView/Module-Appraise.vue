@@ -162,17 +162,17 @@ export default {
     routerTo(item) {
       if (this.canRouteTo) {
         let data = item
-        let id = item.id
+        let docid = item.id
         this.$router.push({
           name: 'contenttext',
           params: {
-            id
+            docid
           }
         })
-        this.$store.commit('contentid', id)
       }
     },
     replyid(item, reply) {
+      console.log(item, reply)
       if (reply.self) {
         this.deleteReplyify(item.id, reply.id);
       } else {
@@ -184,10 +184,7 @@ export default {
           user,
           cid
         };
-        this.popupwapper.data = [];
-        this.popupwapper.data.push(params);
-        this.$store.commit('popupwapper', this.popupwapper);
-        this.popupboxshow();
+        this.$emit('commentuser',params)
       }
     },
     userIndex(item) {
