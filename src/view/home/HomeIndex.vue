@@ -43,7 +43,7 @@
       <div class="table-box" v-if="item.datatable=='table'">
         <ul>
           <!-- 视频循环这个LI -->
-          <li class="f-left" v-if="item.dataType=='video'" v-for="(classData,index) in classDatalist" @click="routerTo(item.id)">
+          <li class="f-left" v-if="item.dataType=='video'" v-for="(classData,index) in classDatalist" @click="routerTo(classData.id,item.dataType)">
             <div class="f-left dataimg">
               <img :src="classData.poster" alt="">
               <div class="integral" v-if="classData.integral==0">免费</div>
@@ -54,7 +54,7 @@
             </div>
           </li>
           <!-- 机构循环这个LI -->
-          <li class="f-left" v-if="item.dataType=='text'" v-for="(ins,index) in institutionDatalist" @click="routerTo(item.id)">
+          <li class="f-left" v-if="item.dataType=='text'" v-for="(ins,index) in institutionDatalist" @click="routerTo(ins.id,item.dataType)">
             <div class="f-left dataimg">
               <img :src="ins.poster" alt="">
             </div>
@@ -146,6 +146,15 @@ export default {
           data
         }
       })
+    },
+    routerTo(item,dataType) {
+      if (dataType == 'video') {
+        let docid = item
+        this.$router.push({ name: 'contentvideo', params: { docid } })
+      } else {
+        let id = item
+        this.$router.push({ name: 'insdetails', params: { id } })
+      }
     },
     apiArr(type) {
       let api = [{

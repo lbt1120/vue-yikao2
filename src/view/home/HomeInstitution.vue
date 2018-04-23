@@ -31,7 +31,7 @@
         <div class="big-datalist">
           <div class="datatag">
             <div class="list-box">
-              <ul v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
+              <ul>
                 <li class="b-cutline" v-for="(item,index) in datalist" @click="routerTo(item.id)">
                   <div class="f-left dataimg">
                     <img :src="item.cover" alt="">
@@ -197,12 +197,12 @@ export default {
         this.updata('more', 0)
       }
     },
-    loadMore() {
-      this.loading = true;
-      setTimeout(() => {
-        this.more();
-      }, 2500);
-    },
+    // loadMore() {
+    //   this.loading = true;
+    //   setTimeout(() => {
+    //     this.more();
+    //   }, 2500);
+    // },
   },
   computed: {  
     keyword: function() {
