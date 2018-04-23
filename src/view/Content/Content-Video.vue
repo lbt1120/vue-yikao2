@@ -282,6 +282,7 @@ video {
     height: 21.3rem;
 }
 .introwapper {
+    background-color: #f3f4f5;
     .title-box {
         height: 5rem;
         line-height: 5rem;

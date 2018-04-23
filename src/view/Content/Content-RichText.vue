@@ -50,7 +50,7 @@ export default {
 }
 </script>
 <style lang="less">
-html {
+#app{
     background-color: #fff;
 }
 .richtextbox {
@@ -62,6 +62,7 @@ html {
     .appraise-top {
         margin: 0 0 1.2rem;
         height: auto;
+        overflow: hidden;
     }
 }
 </style>
