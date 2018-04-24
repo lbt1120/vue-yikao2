@@ -81,7 +81,7 @@
 </div>
 </template>
 <script>
-import swiper from '@/components/ModuleSwiper/Swiper-home'
+import swiper from '@/components/ModuleSwiper/Swiper-InsDetails'
 export default {
   name: 'institutiondetails',
   data() {
@@ -130,6 +130,8 @@ export default {
       } else {
         this.mint.Toast('服务器繁忙')
       }
+      console.log(this.bannerlist)
+
     },
     routerTo(item) {
       let id = item.id;

@@ -124,7 +124,7 @@ const store = new Vuex.Store({
   state: {
     // user: '',
     user: {
-      "type": 2,
+      "type": 1,
       "name": "太",
       "avatar": "https:\/\/yikao.baolanbb.com\/attachment\/mavatar_thumb\/20180403170808yhMmuEdW.jpg",
       "id": "164",

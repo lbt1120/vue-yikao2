@@ -1,5 +1,5 @@
 <template>
-<div class="classdetailswapper" v-if="pageShow==true">
+<div class="classdetailswapper" v-if="pageShow==true" :style="'type==2'?'padding-bottom:0;':'padding-bottom:6.2rem;'">
   <div class="classdetailsbox font28">
     <div class="databox li-tag">
       <ul>
@@ -106,6 +106,7 @@ export default {
       this.$emit('insInfo', '')
       if (res.status == 200) {
         this.dataInfo = res.data.tcourse;
+        console.log(this.$refs)
       } else {
         this.mint.Toast('服务器繁忙')
       }
