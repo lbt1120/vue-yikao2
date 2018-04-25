@@ -1,8 +1,6 @@
 import signin from './signin'
-// import user from './user'
-
-
+import user from './user'
 export default [
-  // ...user,
+  ...user,
   ...signin
 ]
