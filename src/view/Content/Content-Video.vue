@@ -253,6 +253,9 @@ export default {
 .contentvideowapper {
     height: 100%;
     position: relative;
+    .datanotfound {
+        padding: 0;
+    }
     .content-top {
         position: fixed;
         top: 0;
