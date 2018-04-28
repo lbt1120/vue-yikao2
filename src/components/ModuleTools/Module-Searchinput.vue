@@ -84,7 +84,7 @@ export default {
   },
 }
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
 /*搜索框样式*/
 .search-box {
     height: 5rem;
