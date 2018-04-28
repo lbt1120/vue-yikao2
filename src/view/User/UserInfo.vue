@@ -2,22 +2,25 @@
 <section class="infowapper">
   <!-- 用户信息填写 -->
   <div class="wapper userinfowapper" v-if="usertype==1" :class="{'pb5':changetype=='addstudent'}">
-    <div>
-      <mt-field label="姓名" placeholder="请输入姓名" v-model="userinfo.name"></mt-field>
-    </div>
-    <div>
-      <mt-field label="年龄" placeholder="请输入用户年龄" v-model="userinfo.age"></mt-field>
-    </div>
-    <div @click="show">
-      <mt-field label="性别" v-model="userinfo.sex"></mt-field>
-    </div>
+    <section class="usertag">
+      <mt-cell title="姓名">
+        <input type="text" placeholder="请输入姓名" :value="userinfo.name">
+      </mt-cell>
+      <mt-cell title="年龄">
+        <input type="text" placeholder="请输入年龄" :value="userinfo.age">
+      </mt-cell>
+      <mt-cell title="性别" :value="userinfo.sex" @click.native="show('sex')"></mt-cell>
+    </section>
+    <section class="usertag">
+      <mt-cell title="省份" :value="{{userinfo.s_province|city}}" @click.native="show('place')"></mt-cell>
+    </section>
   </div>
   <mt-popup v-model="popupshow" position="bottom" :modal="true">
     <mt-picker :slots="slots" :value-key="valueKey" @change="onValuesChange" :showToolbar="true">
       <div class="topbar">
-        <mt-button size="small" class="cancle">取消</mt-button>
+        <mt-button size="small" class="cancle" @click.native="cancle">取消</mt-button>
         选择性别
-        <mt-button size="small" type="primary" class="sure">确定</mt-button>
+        <mt-button size="small" type="primary" class="sure" @click.native="sure">确定</mt-button>
       </div>
     </mt-picker>
   </mt-popup>
@@ -56,7 +59,7 @@ export default {
         name: "",
         age: "",
         sex: '请选择',
-        s_province: '',
+        s_province: 1,
         s_city: '',
         s_county: '',
         school: '',
@@ -76,13 +79,24 @@ export default {
   components: {},
   computed: {},
   methods: {
-    show() {
-      console.log(1)
+    // 下拉框隐藏
+    cancle() {
+      this.popupshow = false;
+    },
+    // 确定数据，并隐藏下拉框
+    sure() {
+      let name = this.chooseName;
+      this.userinfo[name] = this.chooseValue;
+      this.cancle();
+    },
+    //下拉框显示
+    show(name) {
+      this.chooseName = name;
       this.popupshow = true;
     },
+    // 改变数据
     onValuesChange(picker, values) {
-      console.log(values)
-      this.userinfo.sex = values[0].value
+      this.chooseValue = values[0].value
     }
   },
 }
@@ -114,5 +128,15 @@ export default {
 }
 .mint-popup {
     width: 100%;
+}
+.usertag {
+    background-color: #fff;
+    margin-bottom: 1rem;
+    input {
+        text-align: right;
+    }
+    .mint-cell {
+        border-bottom: 0.05rem solid #e0e0e0;
+    }
 }
 </style>
